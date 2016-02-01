@@ -1,0 +1,61 @@
+<%= form_for(@deck) do |f| %>
+  <% if @deck.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@deck.errors.count, "error") %> prohibited this deck from being saved:</h2>
+
+      <ul>
+      <% @deck.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :creator_id %><br>
+    <%= f.number_field :creator_id %>
+  </div>
+  <div class="field">
+    <%= f.label :published %><br>
+    <%= f.date_select :published %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br>
+    <%= f.number_field :category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :language_id %><br>
+    <%= f.number_field :language_id %>
+  </div>
+  <div class="field">
+    <%= f.label :updated %><br>
+    <%= f.date_select :updated %>
+  </div>
+  <div class="field">
+    <%= f.label :current_contributer_id %><br>
+    <%= f.number_field :current_contributer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :downloads %><br>
+    <%= f.number_field :downloads %>
+  </div>
+  <div class="field">
+    <%= f.label :views %><br>
+    <%= f.number_field :views %>
+  </div>
+  <div class="field">
+    <%= f.label :flag_id %><br>
+    <%= f.number_field :flag_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
