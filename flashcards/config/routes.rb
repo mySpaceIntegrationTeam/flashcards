@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :decks
+  get 'cards/index'
+
+  resources :decks do
+    resources :card
+  end  
+ root to: 'decks#index' 
+
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
