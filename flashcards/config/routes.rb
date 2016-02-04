@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  get 'cards/index'
+  get 'cards/:index' => 'cards#index'
+  resources :decks, :has_many => :cards, :shallow => true
 
   resources :decks do
-    resources :card
+    resources :cards
   end  
+
  root to: 'decks#index' 
 
  
