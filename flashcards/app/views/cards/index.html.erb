@@ -1,18 +1,19 @@
 <h1>Cards in <%= @deck.title %></h1>
-<%= link_to "New card in deck", new_deck_card_path(@deck)%>
+<%= link_to "New Card", new_deck_card_path %>
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
+      <th>Card Number</th> 
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @cards.each do |card| %>
       <tr>
-        <td><span class="card_side_a"><%= card.content %></span></td>
-        <td><%= link_to 'Show', deck_cards_path(@deck, card) %></td>
-        <td><%= link_to 'Edit', edit_deck_card_path(@deck, card) %></td>
+        <td><span class="card_side_a"><%= card.id %></span></td>
+        <td><%= link_to 'Show', deck_card_path(@deck, card) %></td>
+        <td><%= link_to 'Edit', edit_deck_card_path(@deck, card) %></td>jA
+        <td><%= link_to 'Destroy', deck_card_path(@deck, card), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
