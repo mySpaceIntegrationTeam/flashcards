@@ -1,26 +1,23 @@
 class CardsController < ApplicationController
+  before_action :set_deck, only: [:index, :show, :edit, :new]
+
   def index
-  end
-  helper_method def deck
-    @deck ||= decks.find(params[:deck_id])
+    @cards = @deck.cards
   end
 
   def show
+    @cards = @deck.card.find(params[:id])
   end
 
-  def edit
-  end
 
-  def new
-  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_card
-      @card = Card.find(params[:id])
+    def set_deck
+      @deck = Deck.first
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.require(:card).permit(:id, :description, :creator_id, :published, :category_id, :language_id, :updated, :current_contributer_id, :downloads, :views, :flag_id)
+      params.require(:card).permit(:card_id, :background_color, :content, :deck_id)
     end
 end

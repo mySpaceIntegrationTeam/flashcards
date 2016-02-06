@@ -1,5 +1,22 @@
-<h1>First Flash Card</h1>
-<div>THE CARD</div>
+<h1>Cards in <%= @deck.title %></h1>
+<%= link_to "New card in deck", new_deck_card_path(@deck)%>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cards.each do |card| %>
+      <tr>
+        <td><span class="card_side_a"><%= card.content %></span></td>
+        <td><%= link_to 'Show', deck_cards_path(@deck, card) %></td>
+        <td><%= link_to 'Edit', edit_deck_card_path(@deck, card) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<%= link_to 'decks', deck_path(1) %> #hard coded to make it work #need to start writing tests
+<%= link_to 'decks', decks_path%> 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203052349) do
+ActiveRecord::Schema.define(version: 20160206175412) do
 
   create_table "cards", force: :cascade do |t|
     t.integer  "card_id"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20160203052349) do
     t.text     "content"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "deck_id"
+    t.text     "side_a_text"
+    t.text     "side_b_text"
+    t.text     "side_a_image"
+    t.text     "side_b_image"
+    t.text     "side_a_math"
+    t.text     "side_b_math"
   end
 
   create_table "decks", force: :cascade do |t|
