@@ -55,5 +55,8 @@
   <%= @deck.flag_id %>
 </p>
 
+<td><%= link_to 'Show Cards', deck_cards_path(@deck) %></td>
+
 <%= link_to 'Edit', edit_deck_path(@deck) %> |
-<%= link_to 'Back', decks_path %>
+<%= link_to 'Back', decks_path %> |
+
