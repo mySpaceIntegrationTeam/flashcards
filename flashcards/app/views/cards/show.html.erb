@@ -1,21 +1,17 @@
 <p id="notice"><%= notice %></p>
-<p>
-  <strong>Card Id:</strong>
-  <%= @card.id %>
-</p>
 
+<div class="card-container">
 <p>
-  <strong>Side A Text:</strong>
   <%= @card.side_a_text %>
 </p>
-
+</div>
+<div class="card-container">
 <p>
-  <strong>Side B Text:</strong>
   <%= @card.side_b_text %>
 </p>
+</div>
+</br>
 
-<td><%= link_to @deck.title, deck_cards_path(@deck) %></td>
-
-<%= link_to 'Edit', edit_deck_card_path %> |
-<%= link_to 'Back to All Decks', decks_path %> |
+<%= link_to 'Edit Card', edit_deck_card_path %> |
+<%= link_to 'Back the deck', deck_cards_path(@deck) %> |
 
