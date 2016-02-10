@@ -20,6 +20,14 @@
     <%= f.label :description %><br>
     <%= f.text_area :description, :required => true %>
   </div>
+  <div class="field">
+    <%= f.label :back_color %>
+    <%= f.text_field :back_color, :class => 'color' %>
+  </div>
+    <div class="field">
+    <%= f.label :text_color %>
+    <%= f.text_field :text_color, :class => 'color' %>
+  </div>
   <div class="field" style="display:none">
     <%= f.label :creator_id %><br>
     <%= f.number_field :creator_id %>
