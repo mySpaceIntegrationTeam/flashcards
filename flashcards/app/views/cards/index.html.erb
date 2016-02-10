@@ -3,16 +3,16 @@
 <table>
   <thead>
     <tr>
-      <th>Card Number</th> 
-      <th colspan="3">Actions</th>
+      <th>Card Name</th>
+      <th>Card Preview</th> 
+      <th colspan="2">Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @cards.each do |card| %>
       <tr>
-        <td><span class="card_side_a"><%= card.id %></span></td>
-        <td style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>;"><%= card.side_a_text %></br><%= card.side_b_text %></td>
-        <td><%= link_to 'Show', deck_card_path(@deck, card) %></td>
+        <td><span class="card_side_a"><%= link_to card.title, deck_card_path(@deck, card) %></span></td>
+        <td style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>;"><strong>Side A: </strong><%= card.side_a_text %></br><strong>Side B: </strong><%= card.side_b_text %></td>
         <td><%= link_to 'Edit', edit_deck_card_path(@deck, card) %></td>
         <td><%= link_to 'Destroy', deck_card_path(@deck, card), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -20,5 +20,5 @@
   </tbody>
 </table>
 
-<%= link_to 'decks', decks_path%> 
+<%= link_to 'Back to Decks', decks_path%> 
 

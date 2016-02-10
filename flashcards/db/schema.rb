@@ -14,8 +14,9 @@
 ActiveRecord::Schema.define(version: 20160206175412) do
 
   create_table "cards", force: :cascade do |t|
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "title"
     t.integer  "deck_id"
     t.text     "side_a_text"
     t.text     "side_b_text"
