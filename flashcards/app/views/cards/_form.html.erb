@@ -10,7 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_area :title, :required => true %>
+  </div>
   <div class="field">
     <%= f.label :side_a_text %><br>
     <%= f.text_area :side_a_text, :required => true %>
