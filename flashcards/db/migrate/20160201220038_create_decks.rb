@@ -8,7 +8,7 @@ class CreateDecks < ActiveRecord::Migration
       t.integer :category_id
       t.integer :language_id
       t.date :updated
-      t.string :back_color, :null => false, :default => "AAA"
+      t.string :back_color
       t.string :text_color
       t.integer :current_contributer_id
       t.integer :downloads
