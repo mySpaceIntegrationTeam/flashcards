@@ -11,6 +11,7 @@
     <% @cards.each do |card| %>
       <tr>
         <td><span class="card_side_a"><%= card.id %></span></td>
+        <td style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>;"><%= card.side_a_text %></br><%= card.side_b_text %></td>
         <td><%= link_to 'Show', deck_card_path(@deck, card) %></td>
         <td><%= link_to 'Edit', edit_deck_card_path(@deck, card) %></td>
         <td><%= link_to 'Destroy', deck_card_path(@deck, card), method: :delete, data: { confirm: 'Are you sure?' } %></td>
