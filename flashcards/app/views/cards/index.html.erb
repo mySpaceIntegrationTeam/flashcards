@@ -1,23 +1,36 @@
 <h1>Cards in <%= @deck.title %></h1>
 <%= link_to "New Card", new_deck_card_path %>
-<table>
-  <thead>
-    <tr>
-      <th>Card Number</th> 
-      <th colspan="3">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
     <% @cards.each do |card| %>
-      <tr>
+      <div class="card-container">
         <td><span class="card_side_a"><%= card.id %></span></td>
-        <td><%= link_to 'Show', deck_card_path(@deck, card) %></td>
+        <td><%= link_to card.id, deck_card_path(@deck, card) %></td>
         <td><%= link_to 'Edit', edit_deck_card_path(@deck, card) %></td>
         <td><%= link_to 'Destroy', deck_card_path(@deck, card), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
 <%= link_to 'decks', decks_path%> 
 
+<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-use-m-u-i="false">
+        <ul class="orbit-container">
+          <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+          <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+          <% @cards.each do |card| %>
+            <% if card.id = 1 %>
+            <li class="is-active orbit-slide card-container">
+          <%else%>
+          <li class="orbit-slide card-container">
+          <%end%>
+              <span class="card_side_a"><%= card.side_a_text%></span>
+              <span class="thumbnail"><%= card.side_b_text %></span>
+              <span class="thumbnail">card.id</span>
+          </li>
+          <% end %>
+        </ul>
+        <nav class="orbit-bullets">
+         <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+         <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+         <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+         <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+       </nav>
+      </div>
