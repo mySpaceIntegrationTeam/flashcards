@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20160206175412) do
     t.date     "published"
     t.integer  "category_id"
     t.integer  "language_id"
+    t.string   "back_color", default: "FFFFFF"
+    t.string   "text_color", default: "000"
     t.date     "updated"
     t.integer  "current_contributer_id"
     t.integer  "downloads"
