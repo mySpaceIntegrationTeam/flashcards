@@ -14,7 +14,7 @@
         <td><span class="card_side_a"><%= link_to card.title, deck_card_path(@deck, card) %></span></td>
         <td style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>;"><strong>Side A: </strong><%= card.side_a_text %></br><strong>Side B: </strong><%= card.side_b_text %></td>
         <td><%= link_to 'Edit', edit_deck_card_path(@deck, card) %></td>
-        <td><%= link_to 'Destroy', deck_card_path(@deck, card), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', deck_card_path(@deck, card), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
