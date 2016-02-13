@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160206175412) do
+ActiveRecord::Schema.define(version: 20160210221348) do
 
   create_table "cards", force: :cascade do |t|
     t.datetime "created_at",      null: false
@@ -24,8 +24,12 @@ ActiveRecord::Schema.define(version: 20160206175412) do
     t.text     "side_b_image"
     t.text     "side_a_math"
     t.text     "side_b_math"
+<<<<<<< HEAD
     t.string   "card_back_color"
     t.string   "card_text_color"
+=======
+    t.boolean  "is_hidden"
+>>>>>>> 5ee7864e4ffcb8e7e8ac34afc9a08a304f3f0b0a
   end
 
   create_table "decks", force: :cascade do |t|
@@ -35,15 +39,25 @@ ActiveRecord::Schema.define(version: 20160206175412) do
     t.date     "published"
     t.integer  "category_id"
     t.integer  "language_id"
+<<<<<<< HEAD
     t.string   "back_color",             default: "FFFFFF"
     t.string   "text_color",             default: "000"
+=======
+>>>>>>> 5ee7864e4ffcb8e7e8ac34afc9a08a304f3f0b0a
     t.date     "updated"
+    t.string   "back_color",             default: "AAA", null: false
+    t.string   "text_color"
     t.integer  "current_contributer_id"
     t.integer  "downloads"
     t.integer  "views"
     t.integer  "flag_id"
+<<<<<<< HEAD
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+=======
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+>>>>>>> 5ee7864e4ffcb8e7e8ac34afc9a08a304f3f0b0a
   end
 
 end
