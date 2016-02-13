@@ -37,20 +37,22 @@
   <div class="field">
     <%= f.label :card_back_color %>
     <% if @card.card_back_color == nil %>
-    <%= f.text_field :card_back_color, :class => 'color', :value => @deck.back_color %>
+    <%= f.text_field :card_back_color, :class => 'color', :value => @deck.back_color , :required => true %>
     <% else %>
-    <%= f.text_field :card_back_color, :class => 'color'%>
+    <%= f.text_field :card_back_color, :class => 'color', :required => true %>
     <% end %>
   </div>
   <div class="field">
     <%= f.label :card_text_color %>
     <% if @card.card_text_color == nil %>
-    <%= f.text_field :card_text_color, :class => 'color', :value => @deck.text_color %>
+    <%= f.text_field :card_text_color, :class => 'color', :value => @deck.text_color, :required => true %>
     <% else %>
-    <%= f.text_field :card_text_color, :class => 'color'%>
+    <%= f.text_field :card_text_color, :class => 'color', :required => true %>
     <% end %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'button' %>
+    </br>
+    <%= link_to 'Cancel', deck_cards_path, :class => 'button'  %>
   </div>
 <% end %>
