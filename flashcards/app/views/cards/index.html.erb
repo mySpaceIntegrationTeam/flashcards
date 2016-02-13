@@ -1,11 +1,12 @@
 <h1>Cards in <%= @deck.title %></h1>
 <%= link_to "New Card", new_deck_card_path %>
-  <div data-toggler data-animate="fade-in fade-out" class="callout secondary">
-    <p>This panel fades.</p>
-  </div>
-  <div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary">
-    <p>This panel slides.</p>
-  </div><table>
+<div data-toggler data-animate="fade-in fade-out" class="callout secondary">
+<p>This panel fades.</p>
+</div>
+<div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary">
+<p>This panel slides.</p>
+</div><table>
+<table>
   <thead>
     <tr>
       <th>Card Name</th>
@@ -16,7 +17,7 @@
   <tbody>
     <% @cards.each do |card| %>
       <tr>
-        <td><span class="card_side_a"><%= link_to card.title, deck_card_path(@deck, card) %></span></td>
+        <td><span class="card_side_a"><%= link_to card.card_title, deck_card_path(@deck, card) %></span></td>
         <td style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>;"><strong>Side A: </strong><%= card.side_a_text %></br><strong>Side B: </strong><%= card.side_b_text %></td>
         <td><%= link_to 'Edit', edit_deck_card_path(@deck, card) %></td>
         <td><%= link_to 'Destroy', deck_card_path(@deck, card), method: :delete, data: { confirm: 'Are you sure?' } %></td>

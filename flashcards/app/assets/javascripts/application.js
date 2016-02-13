@@ -16,5 +16,6 @@
 //= require turbolinks
 //= require_tree .
 //= require jscolor
+//= require modernizr
 
 $(function(){ $(document).foundation(); });
