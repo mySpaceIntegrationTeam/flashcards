@@ -1,6 +1,11 @@
 <h1>Cards in <%= @deck.title %></h1>
 <%= link_to "New Card", new_deck_card_path %>
-<table>
+  <div data-toggler data-animate="fade-in fade-out" class="callout secondary">
+    <p>This panel fades.</p>
+  </div>
+  <div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary">
+    <p>This panel slides.</p>
+  </div><table>
   <thead>
     <tr>
       <th>Card Name</th>
