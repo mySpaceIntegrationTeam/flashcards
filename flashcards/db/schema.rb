@@ -43,8 +43,14 @@ ActiveRecord::Schema.define(version: 20160210221348) do
     t.integer  "downloads"
     t.integer  "views"
     t.integer  "flag_id"
+<<<<<<< HEAD
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+=======
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "category"
+>>>>>>> c431b8df3235447faf20b17ae7d75c7ac0a5e071
   end
 
 end
