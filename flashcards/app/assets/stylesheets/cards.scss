@@ -1,13 +1,12 @@
 // Place all the styles related to the cards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.card-container {
-    display:inline-block;
-    border: 2px solid #000;
-    min-width: 250px;
-    min-height: 180px;
-    vertical-align: text-middle;
-}
-.card-container p {
-    text-align: center;
+
+.card {
+    width: 250px;
+    height: 300px;
+    border: 1px solid #000;
+    color: #000;
+    margin-left: 10px;
+    font-size: 15px
 }

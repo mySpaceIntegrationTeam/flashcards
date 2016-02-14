@@ -1,13 +1,19 @@
 
-<div class="card-container" style="background:#<%= @card.card_back_color %>; color:#<%= @card.card_text_color %>;">
-<p>
+<div class="row">
+<div class="medium-4 columns">  
+<div class="card" style="background:#<%= @card.card_back_color %>; color:#<%= @card.card_text_color %>;">
   <%= @card.side_a_text %>
-</p>
 </div>
-<div class="card-container" style="background:#<%= @card.card_back_color %>; color:#<%= @card.card_text_color %>;">
-<p>
+</div>
+<div class="medium-4 columns">
+<%= link_to 'Edit', edit_deck_card_path, :class => 'button'  %>
+<%= link_to 'Back to Deck', deck_cards_path(@deck), :class => 'button'  %>
+</div>
+<div class="medium-4 columns">
+<div class="card" style="background:#<%= @card.card_back_color %>; color:#<%= @card.card_text_color %>;">
   <%= @card.side_b_text %>
-</p>
+</div>
+</div>
 </div>
 </br>
 <%= link_to 'Edit', edit_deck_card_path, :class => 'button'  %>

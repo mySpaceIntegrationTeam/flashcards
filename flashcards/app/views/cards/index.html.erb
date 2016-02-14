@@ -1,11 +1,29 @@
 <h1>Cards in <%= @deck.title %></h1>
-<%= link_to "New Card", new_deck_card_path %>
-<div data-toggler data-animate="fade-in fade-out" class="callout secondary">
-<p>This panel fades.</p>
-</div>
-<div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary">
-<p>This panel slides.</p>
-</div><table>
+<button class="button large"><%= link_to "Create a New Card", new_deck_card_path %><button>
+  <div class="row">
+  <% @cards.each do |card| %>
+    <div class="medium-6 columns">
+      <div class="row">
+        <h3 class="card_side_a">Card #<%= card.id %> Title: <%= link_to card.card_title, deck_card_path(@deck, card) %></h3>
+        <p>
+          <%= link_to 'Edit ', edit_deck_card_path(@deck, card) %>|
+          <%= link_to 'Delete', deck_card_path(@deck, card), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+      </div>
+      <div class="medium-6 columns">
+       <div class="card" style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>" data-equalizer-watch>
+        <%= card.side_a_text %>
+      </div>
+      </div>
+      <div class="medium-6 columns">
+      <div class="card" style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>" data-equalizer-watch>
+        <%= card.side_b_text %>
+      </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+<div>
 <table>
   <thead>
     <tr>
@@ -27,4 +45,4 @@
 </table>
 
 <%= link_to 'Back to Decks', decks_path%> 
-
+</div>
