@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160206175412) do
+ActiveRecord::Schema.define(version: 20160213192625) do
 
   create_table "cards", force: :cascade do |t|
     t.datetime "created_at",      null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20160206175412) do
     t.text     "side_b_math"
     t.string   "card_back_color"
     t.string   "card_text_color"
+    t.boolean  "is_hidden"
   end
 
   create_table "decks", force: :cascade do |t|
@@ -44,6 +45,8 @@ ActiveRecord::Schema.define(version: 20160206175412) do
     t.integer  "flag_id"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.string   "category"
+    t.string   "creator"
   end
 
 end

@@ -9,8 +9,13 @@
   <%= @card.side_b_text %>
 </p>
 </div>
+<% if @card.is_hidden %>
+  <p>This card is currently hidden.</p>
+<% else %>
+  <p>This card is currently visible.</p>
+<% end %>
 </br>
-
-<%= link_to 'Edit Card', edit_deck_card_path %> |
-<%= link_to 'Back the deck', deck_cards_path(@deck) %> |
+<%= link_to 'Edit', edit_deck_card_path, :class => 'button'  %>
+</br>
+<%= link_to 'Back to Deck', deck_cards_path(@deck), :class => 'button'  %>
 
