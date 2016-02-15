@@ -1,48 +1,104 @@
-<h1>Cards in <%= @deck.title %></h1>
-<button class="button large"><%= link_to "Create a New Card", new_deck_card_path %></button>
-  <div class="row">
-  <% @cards.each do |card| %>
-    <div class="medium-6 columns">
-      <div class="row">
-        <h3 class="card_side_a">Card #<%= card.id %> Title: <%= link_to card.card_title, deck_card_path(@deck, card) %></h3>
-        <p>
-          <%= link_to 'Edit ', edit_deck_card_path(@deck, card) %>|
-          <%= link_to 'Delete', deck_card_path(@deck, card), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </p>
-      </div>
-      <div class="medium-6 columns">
-       <div class="card" style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>" data-equalizer-watch>
-        <%= card.side_a_text %>
-      </div>
-      </div>
-      <div class="medium-6 columns">
-      <div class="card" style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>" data-equalizer-watch>
-        <%= card.side_b_text %>
-      </div>
-      </div>
-    </div>
-  <% end %>
-  </div>
-<div>
-<table>
-  <thead>
-    <tr>
-      <th>Card Name</th>
-      <th>Card Preview</th> 
-      <th colspan="2">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @cards.each do |card| %>
-      <tr>
-        <td><span class="card_side_a"><%= link_to card.card_title, deck_card_path(@deck, card) %></span></td>
-        <td style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>;"><strong>Side A: </strong><%= card.side_a_text %></br><strong>Side B: </strong><%= card.side_b_text %></td>
-        <td><%= link_to 'Edit', edit_deck_card_path(@deck, card) %></td>
-        <td><%= link_to 'Destroy', deck_card_path(@deck, card), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<style>
+/* Add to docs */
+#scrolling{/*frame*/
+    background:#FF8383;/*FF473D*/
+    height:38%;
+    width:100%;
 
+    overflow: hidden;
+}
+
+.scrolling {
+    /*Add if you want to disable the option of selecting the text while sliding*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    /*top:10%;*/
+    margin-top:4vh;
+    height:80%;
+
+    list-style-type: none;
+
+    -webkit-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+li.slides {
+
+    font-size:8vmin;/*cool*/
+    min-width: 250px;
+    height: 100%;
+    color: #000;
+    font-weight: 300;
+    text-align: center;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -o-border-radius: 30px;
+    -moz-border-radius: 30px;
+    cursor: pointer;
+    background: #FFF;
+    -webkit-transform:  scale(0.95);
+    -ms-transform:  scale(0.95);
+    -moz-transform:  scale(0.95);
+    transform: scale(0.95);
+}
+
+.itemslide-active
+{/*applied to current active item*/
+    -webkit-transform:  scale(1);
+    -ms-transform:  scale(1);
+    -moz-transform:  scale(1);
+    transform: scale(1);
+}
+</style>
+<h1>Cards in <%= @deck.title %></h1>
+<div class="button large"><%= link_to "Create a New Card", new_deck_card_path %></div>
+    <div>
+      <ul class="scrolling">
+        <% @cards.each do |card| %>
+          <li class="row slides">
+            <div class="medium-6 columns">
+              <div class="card" style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>">
+                <p><%= card.side_a_text %></p>
+              </div>
+            </div>
+            <div class="medium-6 columns">
+              <div class="card" style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>">
+                <p><%= card.side_b_text %></p>
+              </div>
+            </div>
+              <h3>Card #<%= card.id %> Title: <%= link_to card.card_title, deck_card_path(@deck, card) %></h3>
+              <p>
+                <%= link_to 'Edit ', edit_deck_card_path(@deck, card) %>|
+                <%= link_to 'Delete', deck_card_path(@deck, card), method: :delete, data: { confirm: 'Are you sure?' } %>
+              </p>
+          </li>
+    <% end %>
+    </ul>
+  </div>
 <%= link_to 'Back to Decks', decks_path%> 
-</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="http://itemslide.github.io/dist/itemslide.min.js"></script>
+<script>
+var carousel;
+$(document).ready(function () {
+    carousel = $(".scrolling");
+    carousel.itemslide();
+});
+console.log(carousel.getActiveIndex());
+carousel.next();
+carousel.on('changePos', function(e) {
+        console.log("new pos: "+ carousel.getCurrentPos());
+});
+
+carousel.on('swipeout', function(event) {
+        console.log("swiped out slide - "+ event.slide);
+});
+</script>
+

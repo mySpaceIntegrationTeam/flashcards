@@ -18,4 +18,3 @@
 //= require jscolor
 //= require modernizr
 
-$(function(){ $(document).foundation(); });

@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 autoSizeText = ->
     elements = $('.card')
-    console.log elements
     return if elements.length < 0
 
     for el in elements
