@@ -45,15 +45,10 @@ ActiveRecord::Schema.define(version: 20160213192625) do
     t.integer  "downloads"
     t.integer  "views"
     t.integer  "flag_id"
-<<<<<<< HEAD
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-=======
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.string   "category"
     t.string   "creator"
->>>>>>> development
   end
 
 end
