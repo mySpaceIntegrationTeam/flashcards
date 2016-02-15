@@ -22,6 +22,10 @@
     <%= f.label :side_b_text %><br>
     <%= f.text_area :side_b_text, :required => true %>
   </div>
+  <div class="field">
+    <%= f.label :is_hidden %><br>
+    <%= f.check_box :is_hidden %>
+  </div>
   <div class="field" style="display: none;">
     <%= f.label :side_a_image %><br>
     <%= f.text_field :side_a_image %>
