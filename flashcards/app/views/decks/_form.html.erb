@@ -32,10 +32,6 @@
     <%= f.label :creator %><br>
     <%= f.text_field :creator %>
   </div>
-  <div class="field">
-    <%= f.label :published %><br>
-    <%= f.date_select :published, :required => true %>
-  </div>
  
    <div class="control-group">
     <%= f.label "Category", class: 'control-label' %>
@@ -46,10 +42,6 @@
   <div class="field" style="display:none">
     <%= f.label :language_id %><br>
     <%= f.number_field :language_id %>
-  </div>
-  <div class="field">
-    <%= f.label :updated %><br>
-    <%= f.date_select :updated, :required => true %>
   </div>
   <div class="field" style="display:none">
     <%= f.label :current_contributer_id %><br>
