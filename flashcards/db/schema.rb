@@ -14,9 +14,11 @@
 ActiveRecord::Schema.define(version: 20160213192625) do
 
   create_table "cards", force: :cascade do |t|
+    t.string   "card_title"
+    t.string   "card_back_color"
+    t.string   "card_text_color"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "title"
     t.integer  "deck_id"
     t.text     "side_a_text"
     t.text     "side_b_text"
@@ -36,17 +38,22 @@ ActiveRecord::Schema.define(version: 20160213192625) do
     t.date     "published"
     t.integer  "category_id"
     t.integer  "language_id"
-    t.string   "back_color",             default: "FFFFFF"
-    t.string   "text_color",             default: "000"
     t.date     "updated"
+    t.string   "back_color"
+    t.string   "text_color"
     t.integer  "current_contributer_id"
     t.integer  "downloads"
     t.integer  "views"
     t.integer  "flag_id"
+<<<<<<< HEAD
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+=======
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.string   "category"
     t.string   "creator"
+>>>>>>> development
   end
 
 end
