@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyText
+  title: "My Deck"
+  description: "My Description"
   creator_id: 1
   published: 2016-02-01
   category_id: 1
@@ -12,16 +12,21 @@ one:
   downloads: 1
   views: 1
   flag_id: 1
+  category: "Math"
+  creator: "RecentUser"
 
 two:
-  title: MyString
-  description: MyText
-  creator_id: 1
-  published: 2016-02-01
-  category_id: 1
-  language_id: 1
-  updated: 2016-02-01
-  current_contributer_id: 1
-  downloads: 1
-  views: 1
-  flag_id: 1
+  title: "My Second Deck"
+  description: "My Second Description"
+  creator_id: 2
+  published: 2016-02-10
+  category_id: 2
+  language_id: 2
+  updated: 2016-02-10
+  current_contributer_id: 2
+  downloads: 2
+  views: 2
+  flag_id: 2
+  category: "Language"
+  creator: "OldUser"
+  

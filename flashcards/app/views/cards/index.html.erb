@@ -64,7 +64,7 @@ li.slides {
       <ul class="scrolling row">
         <% @cards.each do |card| %>
           <li class="slides">
-            <h3>Title: <%= link_to card.title, deck_card_path(@deck, card) %></h3>
+            <h3>Title: <%= link_to card.card_title, deck_card_path(@deck, card) %></h3>
               <div class="card" style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>">
                 <p style="position:relative;top:45%;" onclick="cardText(this,'<%= card.side_a_text %>','<%= card.side_b_text %>')"><%= card.side_a_text %></p>
               </div>
