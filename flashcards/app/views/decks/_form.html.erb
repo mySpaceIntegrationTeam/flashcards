@@ -37,7 +37,7 @@
     <%= f.label :category, class: 'control-label' %>
     <div class="controls">
       <%= f.select(:category, options_for_select([['Math', 'Math'], ['Language', 'Language'], ['Children', 'Children'], ['Misc', 'Misc']]), { include_blank: true }) %>
-  </div>
+    </div>
  
   <div class="control-group">
     <%= f.label :language, class: 'control-label' %>
@@ -45,22 +45,6 @@
       <%= f.select(:language, options_for_select([['English', 'English'], ['Spanish', 'Spanish'], ['German', 'German'], ['French', 'French'], ['Italian', 'Italian']]), { include_blank: true }) %>
   </div>
 
-  <div class="field" style="display:none">
-    <%= f.label :current_contributer_id %><br>
-    <%= f.number_field :current_contributer_id %>
-  </div>
-  <div class="field" style="display:none">
-    <%= f.label :downloads %><br>
-    <%= f.number_field :downloads %>
-  </div>
-  <div class="field" style="display:none">
-    <%= f.label :views %><br>
-    <%= f.number_field :views %>
-  </div>
-  <div class="field" style="display: none;">
-    <%= f.label :flag_id %><br>
-    <%= f.number_field :flag_id %>
-  </div>
   <div class="actions">
     <%= f.submit class: 'button' %>
     </br>

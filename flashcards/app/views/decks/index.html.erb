@@ -12,7 +12,7 @@
       <th>Language</th>
       <th>Published</th>
       <th>Updated</th>
-      <th colspan="4">Actions</th>
+      <th colspan="5">Actions</th>
     </tr>
   </thead>
 
@@ -25,8 +25,8 @@
         <td style="background:#<%= deck.back_color %>;color:#<%= deck.text_color %>">Preview</td>        
         <td><%= deck.category %></td>
         <td><%= deck.language %></td>
-        <td><%= deck.published %></td>        
-        <td><%= deck.updated %></td>
+        <td><%= deck.created_at.to_formatted_s(:long) %></td>
+        <td><%= time_ago_in_words(deck.updated_at) %> ago</td>
         <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
         <td><%= link_to 'Manage Cards', deck_cards_path(deck) %></td>
         <td><%= link_to 'Delete', deck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -38,4 +38,4 @@
 </div>
 <br>
 
-<%= link_to 'New Deck', new_deck_path %>
+<%= link_to 'New Deck', new_deck_path, :class => 'button' %>
