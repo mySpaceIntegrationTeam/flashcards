@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(version: 20160213192625) do
 
   create_table "cards", force: :cascade do |t|
-    t.integer  "card_id"
-    t.text     "background_color"
-    t.text     "content"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string   "card_title"
+    t.string   "card_back_color"
+    t.string   "card_text_color"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "deck_id"
     t.text     "side_a_text"
     t.text     "side_b_text"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20160213192625) do
     t.integer  "category_id"
     t.integer  "language_id"
     t.date     "updated"
+    t.string   "back_color"
+    t.string   "text_color"
     t.integer  "current_contributer_id"
     t.integer  "downloads"
     t.integer  "views"
