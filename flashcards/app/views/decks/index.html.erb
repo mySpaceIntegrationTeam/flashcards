@@ -7,15 +7,11 @@
       <th>Title</th>
       <th>Description</th>
       <th>Creator</th>
-      <th>Published</th>
       <th>Preview</th>
       <th>Category</th>
       <th>Language</th>
+      <th>Published</th>
       <th>Updated</th>
-      <th>Current contributer</th>
-      <th>Downloads</th>
-      <th>Views</th>
-      <th style="display: none;">Flag</th>
       <th colspan="4">Actions</th>
     </tr>
   </thead>
@@ -26,17 +22,13 @@
         <td><%= link_to deck.title, deck%></td>
         <td><%= deck.description %></td>
         <td><%= deck.creator %></td>
-        <td><%= deck.published %></td>
         <td style="background:#"><%= deck.back_color %>;color:#<%= deck.text_color %>">Preview</td>
         <td><%= deck.category %></td>
-        <td><%= deck.language_id %></td>
+        <td><%= deck.language %></td>
+        <td><%= deck.published %></td>        
         <td><%= deck.updated %></td>
-        <td><%= deck.current_contributer_id %></td>
-        <td><%= deck.downloads %></td>
-        <td><%= deck.views %></td>
-        <td style="display: none;"><%= deck.flag_id %></td>
         <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
-        <td><%= link_to 'View/Edit Cards', deck_cards_path(deck) %></td>
+        <td><%= link_to 'Manage Cards', deck_cards_path(deck) %></td>
         <td><%= link_to 'Delete', deck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

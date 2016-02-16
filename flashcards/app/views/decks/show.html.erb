@@ -9,13 +9,18 @@
 </p>
 
 <p>
+  <strong>Creator:</strong>
+  <%= @deck.creator %>
+</p>
+
+<p>
   <strong>Category:</strong>
   <%= @deck.category %>
 </p>
 
 <p>
-  <strong>Creator:</strong>
-  <%= @deck.creator %>
+  <strong>Language:</strong>
+  <%= @deck.language %>
 </p>
 
 <p>
@@ -26,21 +31,6 @@
 <p>
   <strong>Updated:</strong>
   <%= @deck.updated %>
-</p>
-
-<p>
-  <strong>Downloads:</strong>
-  <%= @deck.downloads %>
-</p>
-
-<p>
-  <strong>Views:</strong>
-  <%= @deck.views %>
-</p>
-
-<p style="display: none;">
-  <strong>Flag:</strong>
-  <%= @deck.flag_id %>
 </p>
 
 <td><%= link_to 'Show Cards', deck_cards_path(@deck) %></td>

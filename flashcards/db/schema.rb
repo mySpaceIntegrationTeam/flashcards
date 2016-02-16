@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213192625) do
+ActiveRecord::Schema.define(version: 20160216193346) do
 
   create_table "cards", force: :cascade do |t|
-    t.string   "card_title"
-    t.string   "card_back_color"
-    t.string   "card_text_color"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "card_id"
+    t.text     "background_color"
+    t.text     "content"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "deck_id"
     t.text     "side_a_text"
     t.text     "side_b_text"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20160213192625) do
     t.text     "side_a_math"
     t.text     "side_b_math"
     t.boolean  "is_hidden"
+    t.string   "card_back_color"
+    t.string   "card_text_color"
   end
 
   create_table "decks", force: :cascade do |t|
@@ -37,8 +39,6 @@ ActiveRecord::Schema.define(version: 20160213192625) do
     t.integer  "category_id"
     t.integer  "language_id"
     t.date     "updated"
-    t.string   "back_color"
-    t.string   "text_color"
     t.integer  "current_contributer_id"
     t.integer  "downloads"
     t.integer  "views"
@@ -47,6 +47,9 @@ ActiveRecord::Schema.define(version: 20160213192625) do
     t.datetime "updated_at",             null: false
     t.string   "category"
     t.string   "creator"
+    t.string   "back_color"
+    t.string   "text_color"
+    t.string   "language"
   end
 
 end
