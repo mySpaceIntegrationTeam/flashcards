@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(version: 20160213192625) do
     t.text     "side_b_image"
     t.text     "side_a_math"
     t.text     "side_b_math"
-    t.string   "card_back_color"
-    t.string   "card_text_color"
     t.boolean  "is_hidden"
   end
 
@@ -45,8 +43,8 @@ ActiveRecord::Schema.define(version: 20160213192625) do
     t.integer  "downloads"
     t.integer  "views"
     t.integer  "flag_id"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "category"
     t.string   "creator"
   end
