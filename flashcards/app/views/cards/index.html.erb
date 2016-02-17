@@ -62,7 +62,7 @@ li.slides {
 <%= link_to 'Back to Decks', decks_path, :class => 'button' %> 
     <div class="small-12 columns">
       <ul class="scrolling row">
-        <% @cards.each do |card| %>
+        <% @cards.shuffle.each do |card| %>
           <li class="slides">
             <h3>Title: <%= link_to card.card_title, deck_card_path(@deck, card) %></h3>
               <div class="card" style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>">
