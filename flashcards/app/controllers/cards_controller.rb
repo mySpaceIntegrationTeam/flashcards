@@ -14,11 +14,15 @@ class CardsController < ApplicationController
   #GET /decks/:deck_id/cards/:id/edit
   def edit
   @card = @deck.cards.find(params[:id])
+  @card = card.find(params[:id])
+  @deck = @card.deck
   end
 
   #GET /decks/:deck_id/cards/new
   def new
     @card = @deck.cards.build
+    @card = card.find(params[:id])
+    @deck = @card.deck
   end
   
   #POST /decks/:decks_id/cards/
