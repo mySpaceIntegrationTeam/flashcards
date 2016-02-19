@@ -1,104 +1,177 @@
+<script src="https://hammerjs.github.io/dist/hammer.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <style>
-/* Add to docs */
-#scrolling{/*frame*/
-    background:#FF8383;/*FF473D*/
-    height:38%;
-    width:100%;
-    overflow: hidden;
+
+
+.content{
+  margin-left: 0;
+  display: inline-block;
+  height: 500px;
+  font-size: 4em;
+  width: 370px;
+  border: none;
 }
 
-.scrolling {
-    /*Add if you want to disable the option of selecting the text while sliding*/
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    /*top:10%;*/
-    margin-top:4vh;
-    height:80%;
-
-    list-style-type: none;
-
-    -webkit-transform-style: preserve-3d;
-	-ms-transform-style: preserve-3d;
-	transform-style: preserve-3d;
+.wrapper{
+  perspective: 300px;
+  perspective-origin: 50% -5%;
+  z-index:0;
+  border:0px solid #fff;
+  position: absolute;
+  overflow: hidden;
+  top:0;
+  left:2px;
+  right:2px;
+  bottom:0;
 }
 
-li.slides {
-
-    font-size:8vmin;/*cool*/
-    min-width: 250px;
-    height: 100%;
-    color: #000;
-    font-weight: 300;
-    text-align: center;
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -o-border-radius: 30px;
-    -moz-border-radius: 30px;
-    cursor: pointer;
-    background: #FFF;
-    -webkit-transform:  scale(0.95);
-    -ms-transform:  scale(0.95);
-    -moz-transform:  scale(0.95);
-    transform: scale(0.95);
+.cardShow{
+  cursor:pointer;
+  max-width:370px;
+  text-align:center;
+  width:100%;
+  margin-left: 0;
+  position:absolute;
+  bottom:5%;
+  transform-style: preserve-3d;
+  transform-origin:200% 200%;
+  z-index:10;
+  transition:all 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transform:translate3d(0,0,-800px);
 }
 
-.itemslide-active
-{/*applied to current active item*/
-    -webkit-transform:  scale(1);
-    -ms-transform:  scale(1);
-    -moz-transform:  scale(1);
-    transform: scale(1);
+.card_title{
+  font-size: 2em;
 }
+
 </style>
-<h1>Cards in <%= @deck.title %></h1>
-<%= link_to "Create a New Card", new_deck_card_path, :class => 'button'  %>
-<%= link_to 'Back to Decks', decks_path, :class => 'button' %> 
-    <div class="small-12 columns">
-      <ul class="scrolling row">
-        <% @cards.each do |card| %>
-          <li class="slides">
-            <h3>Title: <%= link_to card.title, deck_card_path(@deck, card) %></h3>
-              <div class="card" style="background:#<%= card.card_back_color %>; color:#<%= card.card_text_color %>">
-                <p style="position:relative;top:45%;" onclick="cardText(this,'<%= card.side_a_text %>','<%= card.side_b_text %>')"><%= card.side_a_text %></p>
-              </div>
-              <p>
-                <%= link_to 'Edit ', edit_deck_card_path(@deck, card), :class => 'button'  %>
-                <%= link_to 'Delete', deck_card_path(@deck, card), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'button'  %>
-              </p>
-          </li>
-    <% end %>
-    </ul>
-  </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src="https://itemslide.github.io/dist/itemslide.min.js"></script>
+
+
+<div class="wrapper">
+  <div class="row">
+  <% @cards.each do |card|%>
+      <div class="cardShow" style="background-color: #<%= card.card_back_color %>;" onDragStart="return false">
+        <div class="card content">
+          <%= card.card_title %><br>
+          <%= card.side_b_text %>
+        </div>
+      </div>
+<% end %>
+</div>
+</div>
+
+
+
 <script>
-var carousel;
-$(document).ready(function () {
-    carousel = $(".scrolling");
-    carousel.itemslide();
-});
-console.log(carousel.getActiveIndex());
-carousel.next();
-carousel.on('changePos', function(e) {
-        console.log("new pos: "+ carousel.getCurrentPos());
+//Plugin jquery.hammer.js  https://github.com/hammerjs/jquery.hammer.js/blob/master/jquery.hammer.js
+(function(factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery', 'hammerjs'], factory);
+    } else if (typeof exports === 'object') {
+        factory(require('jquery'), require('hammerjs'));
+    } else {
+        factory(jQuery, Hammer);
+    }
+}(function($, Hammer) {
+    function hammerify(el, options) {
+        var $el = $(el);
+        if(!$el.data("hammer")) {
+            $el.data("hammer", new Hammer($el[0], options));
+        }
+    }
+
+    $.fn.hammer = function(options) {
+        return this.each(function() {
+            hammerify(this, options);
+        });
+    };
+
+    // extend the emit method to also trigger jQuery events
+    Hammer.Manager.prototype.emit = (function(originalEmit) {
+        return function(type, data) {
+            originalEmit.call(this, type, data);
+            $(this.element).trigger({
+                type: type,
+                gesture: data
+            });
+        };
+    })(Hammer.Manager.prototype.emit);
+}));
+//END jquery.hammer.js
+$(function() {
+
+  //Initialize
+
+  function init() {
+    posZ = [];
+    $('.cardShow').each(function(e) {
+
+      posZ[e] = e * 20;
+
+      $(this).css({
+        'transform': 'translate3d(0,0,-' + posZ[e] + 'px)',
+        'z-index': '-' + posZ[e],
+        //'opacity' : 3 / (e + 1),
+        //'-webkit-filter' : 'blur('+(e*0.9)+'px)'
+      });
+
+    });
+  }
+
+  function carteOut() {
+    $firstCard = $('.cardShow').first();
+
+    setTimeout(function() {
+      $('.cardShow:last').after($firstCard);
+      $('.cardShow:last').css('opacity', 1);
+      init();
+    }, 50);
+  }
+
+  var moveX;
+
+  function Touchpan(e) {
+    //ev.gesture.preventDefault();
+    target = e.target;
+    moveX = (e.gesture.deltaX) / 8;
+
+    $(target).css({
+      'transition': 'none',
+      'transform': 'rotate3d(0,0,1, ' + moveX + 'deg)'
+    });
+    console.log(moveX);
+  }
+
+  function panend(e) {
+    if (moveX >= 10 || moveX <= -10) {
+      $(target).css({
+        'transition': 'all 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86)',
+        'transform': 'translate3d(0,100px,0)',
+        'z-index': '-10000'
+      });
+
+      carteOut();
+    } else {
+      $(target).css({
+        'transition': 'all 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86)',
+        'transform': 'rotate3d(0,0,1, 0deg)'
+      });
+    }
+
+  }
+
+  $('.cardShow').hammer().on("pan", Touchpan);
+   $('.cardShow').hammer().on("panend", panend);
+  $('.cardShow').hammer().on("tap", function() {
+      $(this).css({zIndex: +10, transform: "translate3d(500px,0, 0)", perspective: 200+"px", perspectiveOrigin: 75+"%" -50+"%"});
+      
+  });
+  init();
+
 });
 
-carousel.on('swipeout', function(event) {
-        console.log("swiped out slide - "+ event.slide);
-});
+
 </script>
-<script>
-  function cardText(id, sideA, sideB) {
-    if(id.innerHTML == sideA)
-      id.innerHTML = sideB;
-      else
-      id.innerHTML = sideA;
-      
-  }
-</script>
+
+<script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
