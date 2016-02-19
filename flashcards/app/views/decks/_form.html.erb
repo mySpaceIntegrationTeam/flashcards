@@ -22,7 +22,8 @@
   </div>
   <div class="field">
     <%= f.label :back_color %>
-    <%= f.text_field :back_color, :class => 'color' %>
+    <%=  %>
+    <%= f.text_field :back_color, :class => 'color', :value => h(@deck.back_color) rescue 'No category found' %>
   </div>
     <div class="field">
     <%= f.label :text_color %>

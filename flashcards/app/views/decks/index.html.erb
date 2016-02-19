@@ -1,39 +1,22 @@
+<style>
+  .deck {
+    border: 1px solid #000;
+    font-align: center;
+    width: 250px;
+    height: 300px;
+  }
+</style>
 <h1>Listing Decks</h1>
 <div class="row">
   <div class="large-10 columns">
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Creator</th>
-      <th>Preview</th>
-      <th>Category</th>
-      <th>Language</th>
-      <th>Published</th>
-      <th>Updated</th>
-      <th colspan="5">Actions</th>
-    </tr>
-  </thead>
 
-  <tbody>
     <% @decks.each do |deck| %>
-      <tr>
-        <td><%= link_to deck.title, deck%></td>
-        <td><%= deck.description %></td>
-        <td><%= deck.creator %></td>
-        <td style="background:#<%= deck.back_color %>;color:#<%= deck.text_color %>">Preview</td>        
-        <td><%= deck.category %></td>
-        <td><%= deck.language %></td>
-        <td><%= deck.created_at.to_formatted_s(:long) %></td>
-        <td><%= time_ago_in_words(deck.updated_at) %> ago</td>
-        <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
-        <td><%= link_to 'Manage Cards', deck_cards_path(deck) %></td>
-        <td><%= link_to 'Delete', deck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+       <h1><%= link_to deck.title, deck_path(deck) %></h1>
+       <div class="deck">
+         <div class-"cards"></div>
+         <div class-"info"></div>
+       </div>
     <% end %>
-  </tbody>
-</table>
 </div>
 </div>
 <br>
