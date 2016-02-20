@@ -14,7 +14,6 @@
 ActiveRecord::Schema.define(version: 20160216193346) do
 
   create_table "cards", force: :cascade do |t|
-    t.integer   "id"
     t.string   "card_title"
     t.string   "card_back_color"
     t.string   "card_text_color"
