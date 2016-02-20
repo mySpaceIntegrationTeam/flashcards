@@ -5,12 +5,6 @@ class DecksControllerTest < ActionController::TestCase
     @deck = decks(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:decks)
-  end
-
   test "should get new" do
     get :new
     assert_response :success
@@ -18,7 +12,7 @@ class DecksControllerTest < ActionController::TestCase
 
   test "should create deck" do
     assert_difference('Deck.count') do
-      post :create, deck: { category_id: @deck.category_id, creator_id: @deck.creator_id, current_contributer_id: @deck.current_contributer_id, description: @deck.description, downloads: @deck.downloads, flag_id: @deck.flag_id, language_id: @deck.language_id, published: @deck.published, title: @deck.title, updated: @deck.updated, views: @deck.views }
+      post :create, deck: { title: "Test Deck", description: "Create a Test deck", back_color: "White", text_color: "Black", downloads: 1, views: 0, flag_id: 0, category: "Misc", creator: "Tester", language: "English" }
     end
 
     assert_redirected_to deck_path(assigns(:deck))
@@ -35,7 +29,7 @@ class DecksControllerTest < ActionController::TestCase
   end
 
   test "should update deck" do
-    patch :update, id: @deck, deck: { category_id: @deck.category_id, creator_id: @deck.creator_id, current_contributer_id: @deck.current_contributer_id, description: @deck.description, downloads: @deck.downloads, flag_id: @deck.flag_id, language_id: @deck.language_id, published: @deck.published, title: @deck.title, updated: @deck.updated, views: @deck.views }
+    patch :update, id: @deck, deck: { title: @deck.title, description: @deck.description, back_color: @deck.back_color, text_color: @deck.text_color, downloads: @deck.downloads, views: @deck.views, flag_id: @deck.flag_id, category: @deck.category, creator: @deck.creator, language: @deck.language }
     assert_redirected_to deck_path(assigns(:deck))
   end
 

@@ -25,12 +25,12 @@
 
 <p>
   <strong>Published:</strong>
-  <%= @deck.published %>
+  <%= @deck.created_at %>
 </p>
 
 <p>
   <strong>Updated:</strong>
-  <%= @deck.updated %>
+  <%= @deck.updated_at %>
 </p>
 
 <td><%= link_to 'Show Cards', deck_cards_path(@deck) %></td>

@@ -7,6 +7,8 @@ class DeckTest < ActiveSupport::TestCase
         deck.title = "Awesome Deck"
         deck.description = "A deck full of awesome-ness!"
         deck.creator = "Awe Some"
+        deck.back_color = "White"
+        deck.text_color = "Black"
     assert deck.save 
     end
 
@@ -25,10 +27,5 @@ class DeckTest < ActiveSupport::TestCase
         assert !deck.save # save should fail because there are errors. assert deck.errors[:creator].include?("can't be blank")
     end
     
-    test "should only have one deck with the same name" do 
-        @deck = Recipe.new(:title =>"My Deck")
-        @deck.valid?
-        assert @deck.errors[:title].include?("must be unique")
-    end
 
 end
