@@ -1,6 +1,7 @@
 class CreateCards < ActiveRecord::Migration
   def change
     create_table :cards do |t|
+      t.integer :id
       t.string :card_title
       t.string :card_back_color
       t.string :card_text_color

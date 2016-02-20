@@ -3,30 +3,28 @@
 one:
   title: "My Deck"
   description: "My Description"
-  creator_id: 1
-  published: 2016-02-01
-  category_id: 1
-  language_id: 1
-  updated: 2016-02-01
-  current_contributer_id: 1
+  back_color: "White"
+  text_color: "Black"
   downloads: 1
   views: 1
-  flag_id: 1
+  flag_id: 0
+  created_at: 2016-01-15
+  updated_at: 2016-02-01
   category: "Math"
   creator: "RecentUser"
+  language: "English"
 
 two:
   title: "My Second Deck"
   description: "My Second Description"
-  creator_id: 2
-  published: 2016-02-10
-  category_id: 2
-  language_id: 2
-  updated: 2016-02-10
-  current_contributer_id: 2
+  back_color: "Black"
+  text_color: "White"
   downloads: 2
   views: 2
-  flag_id: 2
+  flag_id: 0
+  created_at: 2016-30-01
+  updated_at: 2016-02-01
   category: "Language"
   creator: "OldUser"
+  language: "German"
   

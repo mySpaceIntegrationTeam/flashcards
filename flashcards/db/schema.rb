@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216200529) do
+ActiveRecord::Schema.define(version: 20160216193346) do
 
   create_table "cards", force: :cascade do |t|
-    t.integer  "card_id"
-    t.text     "background_color"
-    t.text     "content"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer   "id"
+    t.string   "card_title"
+    t.string   "card_back_color"
+    t.string   "card_text_color"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "deck_id"
     t.text     "side_a_text"
     t.text     "side_b_text"
@@ -27,29 +28,22 @@ ActiveRecord::Schema.define(version: 20160216200529) do
     t.text     "side_a_math"
     t.text     "side_b_math"
     t.boolean  "is_hidden"
-    t.string   "card_back_color"
-    t.string   "card_text_color"
-    t.string   "card_title"
   end
+
+  add_index "cards", ["deck_id"], name: "index_cards_on_deck_id"
 
   create_table "decks", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "creator_id"
-    t.date     "published"
-    t.integer  "category_id"
-    t.integer  "language_id"
-    t.date     "updated"
-    t.integer  "current_contributer_id"
+    t.string   "back_color"
+    t.string   "text_color"
     t.integer  "downloads"
     t.integer  "views"
     t.integer  "flag_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "category"
     t.string   "creator"
-    t.string   "back_color"
-    t.string   "text_color"
     t.string   "language"
   end
 

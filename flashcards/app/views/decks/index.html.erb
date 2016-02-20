@@ -25,7 +25,7 @@
         <td style="background:#<%= deck.back_color %>;color:#<%= deck.text_color %>">Preview</td>        
         <td><%= deck.category %></td>
         <td><%= deck.language %></td>
-        <td><%= deck.created_at.to_formatted_s(:long) %></td>
+        <td><%= deck.created_at.strftime("%B %e, %Y") %></td>
         <td><%= time_ago_in_words(deck.updated_at) %> ago</td>
         <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
         <td><%= link_to 'Manage Cards', deck_cards_path(deck) %></td>

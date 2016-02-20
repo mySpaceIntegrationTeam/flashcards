@@ -1,5 +1,6 @@
 class AddDeckIdToCards < ActiveRecord::Migration
   def change
-    add_column :cards, :deck_id, :integer
+    add_reference :cards, :deck, index: true
+    add_foreign_key :cards, :decks
   end
 end

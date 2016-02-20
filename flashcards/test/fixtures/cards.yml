@@ -1,11 +1,33 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  card_id: 1
-  background_color: MyText
-  content: MyText
-
+  id: 1
+  card_title: "First Card"
+  card_back_color: "White"
+  card_text_color: "Black"
+  created_at: 2016-02-12
+  updated_at: 2016-02-14
+  deck_id: 1
+  side_a_text: "Side A Text"
+  side_a_text: "Side B Text"
+  side_a_image: "Side A image"
+  side_b_image: "Side B image"
+  side_a_math: "Side A math"
+  side_b_math: "Side B math"
+  is_hidden: false
+  
 two:
-  card_id: 1
-  background_color: MyText
-  content: MyText
+  id: 2
+  card_title: "Second Card"
+  card_back_color: "Black"
+  card_text_color: "White"
+  created_at: 2016-02-13
+  updated_at: 2016-02-15
+  deck_id: 1
+  side_a_text: "Side A Text II"
+  side_a_text: "Side B Text II"
+  side_a_image: "Side A image II"
+  side_b_image: "Side B image II"
+  side_a_math: "Side A math II"
+  side_b_math: "Side B math II"
+  is_hidden: false
